@@ -9,7 +9,7 @@ function DisplayCard({title,body,index,todoList,setTodoList}) {
     }
   return (
     <div className='flex flex-col gap-3 w-96 p-3 rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'>
-        <p>{title}</p>
+        <p className='font-bold font'>{title}</p>
         <p>{body}</p>
         <div className='flex justify-between items-center'>
             <label className='flex gap-2'>
