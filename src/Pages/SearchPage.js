@@ -29,8 +29,8 @@ function SearchPage({ todoList }) {
                 (loading?(<div className='flex justify-center mt-10'>
                     <div className="custom-loader"></div>
                 </div>):
-                (ansList.length===0?(<div>No item found with title ${title}</div>):
-                (<div className='flex flex-col mx-10 my-20'>
+                (ansList.length===0?(<div className='flex justify-center mt-10 text-3xl gap-3'>No item found with title  <span className='text-blue-600 '>{title}</span></div>):
+                (<div className='flex flex-col mx-10 my-20 items-center'>
                     {
                         ansList.map((item,index)=>{
                             return (<DisplaySearchCard 
