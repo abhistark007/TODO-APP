@@ -61,6 +61,14 @@ function HomePage({todoList,setTodoList}) {
     }
     setLoading(false);
   }
+
+
+  const [filterStatus,setFilterStatus]=useState(false);
+
+
+ 
+
+
   return (
     <div className="App flex flex-col mb-20">
       
@@ -81,7 +89,19 @@ function HomePage({todoList,setTodoList}) {
           </button>
           <div className='absolute bg-white duration-200 opacity-30 w-full  bottom-0 left-0 right-0 h-0 group-hover:h-full rounded-xl'></div>
         </div>
-      </div>
+
+        {/* Filter BUtton */}
+        <div className='flex gap-10 justify-center'>
+            <button onClick={()=>setFilterStatus(true)}
+            className={`bg-purple-600 px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"bg-pink-600":""}`}>
+                Filter ON
+            </button>
+            <button onClick={()=>setFilterStatus(false)}
+            className={`bg-purple-600 px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"":"bg-pink-600"}`}>
+                Filter OFF
+            </button>
+        </div>
+      </div> 
       {/* Display Output Section */}
       {
         loading ? (<div className='flex flex-col pt-10 items-center mx-10'>
@@ -97,6 +117,7 @@ function HomePage({todoList,setTodoList}) {
                   body={todo.body}
                   todoList={todoList}
                   setTodoList={setTodoList}
+                  filterOn={filterStatus}
                 />)
               })
             }
