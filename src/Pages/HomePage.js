@@ -6,17 +6,18 @@ import TodoForm from '../Models/TodoForm';
 import DisplayCard from '../Models/DisplayCard';
 import '../App.css'
 
-function HomePage() {
-    const [titleSearch, setTitleSearch] = useState("");
+function HomePage({todoList,setTodoList}) {
+  const [titleSearch, setTitleSearch] = useState("");
   const [titleController, setTitleController] = useState("");
   const [taskController, setTaskController] = useState("");
 
-  const [todoList, setTodoList] = useState([]);
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log("I AM HERE");
     try {
-      fetch('https://jsonplaceholder.typicode.com/posts')
+       fetch('https://jsonplaceholder.typicode.com/posts')
         .then((response) => response.json())
         .then((json) => {
           setTodoList(json);
@@ -25,7 +26,7 @@ function HomePage() {
       console.log("Error occured while initial fetching using useEffect");
       console.log(e.message);
     }
-  }, []);
+  },[]);
 
 
   const addTodo = async () => {
@@ -62,11 +63,10 @@ function HomePage() {
   }
   return (
     <div className="App flex flex-col mb-20">
-      {/* Navbar */}
-      {/* <Navbar /> */}
+      
       {/* Search Bar & Adding Post options */}
       <div className='flex flex-col mx-10 my-10 gap-5'>
-        <SearchBar text={"Search by title"} textController={titleSearch} setTextController={setTitleSearch} />
+        <SearchBar text={"Search by title"} textController={titleSearch} setTextController={setTitleSearch} todoList={todoList} />
 
         <TodoForm
           titleController={titleController}
@@ -85,7 +85,7 @@ function HomePage() {
       {/* Display Output Section */}
       {
         loading ? (<div className='flex flex-col pt-10 items-center mx-10'>
-          <div class="custom-loader"></div>
+          <div className="custom-loader"></div>
         </div>) :
           (<div className='flex flex-col mx-10 items-center gap-10'>
             {
