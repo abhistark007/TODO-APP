@@ -14,19 +14,7 @@ function HomePage({todoList,setTodoList}) {
   
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    console.log("I AM HERE");
-    try {
-       fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json())
-        .then((json) => {
-          setTodoList(json);
-        });
-    } catch (e) {
-      console.log("Error occured while initial fetching using useEffect");
-      console.log(e.message);
-    }
-  },[]);
+  
 
 
   const addTodo = async () => {
