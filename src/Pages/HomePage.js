@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast';
-import Navbar from '../Models/Navbar';
+
 import SearchBar from '../Models/SearchBar';
 import TodoForm from '../Models/TodoForm';
 import DisplayCard from '../Models/DisplayCard';
