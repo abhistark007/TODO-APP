@@ -7,7 +7,6 @@ function DisplayCard({title,body,index,todoList,setTodoList,filterOn}) {
         let tempList=Array.from(todoList);
         tempList.splice(index,1);
         setCompleted(false);
-        document.getElementsByClassName("mycheck").checked=false;
         setTodoList(tempList);
     }
     const [completed,setCompleted]=useState(false);
