@@ -5,12 +5,30 @@ import Navbar from './Models/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import SearchPage from './Pages/SearchPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
 
   const [todoList, setTodoList] = useState([]);
+
+  useEffect(() => {
+    console.log("I AM HERE");
+    async function getData(){
+        try {
+            fetch('https://jsonplaceholder.typicode.com/posts')
+             .then((response) => response.json())
+             .then((json) => {
+               setTodoList(json);
+             });
+         } catch (e) {
+           console.log("Error occured while initial fetching using useEffect");
+           console.log(e.message);
+         }
+    }
+
+    getData();
+  },[]);
 
 
   return (
