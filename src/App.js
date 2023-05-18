@@ -1,41 +1,81 @@
 
-import { useState } from 'react';
+// import { useEffect, useState } from 'react';
 import './App.css';
 import Navbar from './Models/Navbar';
-import SearchBar from './Models/SearchBar';
-import TodoForm from './Models/TodoForm';
+// import SearchBar from './Models/SearchBar';
+// import TodoForm from './Models/TodoForm';
+// import DisplayCard from './Models/DisplayCard';
+// import { toast } from 'react-hot-toast';
+import { Route, Router, Routes } from 'react-router-dom';
+import HomePage from './Pages/HomePage';
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [titleController, setTitleController] = useState("");
-  const [taskController, setTaskController] = useState("");
+  // const [titleSearch, setTitleSearch] = useState("");
+  // const [titleController, setTitleController] = useState("");
+  // const [taskController, setTaskController] = useState("");
+
+  // const [todoList, setTodoList] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   try {
+  //     fetch('https://jsonplaceholder.typicode.com/posts')
+  //       .then((response) => response.json())
+  //       .then((json) => {
+  //         setTodoList(json);
+  //       });
+  //   } catch (e) {
+  //     console.log("Error occured while initial fetching using useEffect");
+  //     console.log(e.message);
+  //   }
+  // }, []);
+
+
+  // const addTodo = async () => {
+  //   setLoading(true);
+  //   try {
+  //     await fetch('https://jsonplaceholder.typicode.com/posts', {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         title: titleController,
+  //         body: taskController,
+  //       }),
+  //       headers: {
+  //         'Content-type': 'application/json; charset=UTF-8',
+  //       },
+  //     }).then((response) => response.json())
+  //       .then((json) => {
+  //         console.log(json);
+  //         let tempList = Array.from(todoList);
+  //         // console.log(tempList);
+  //         tempList.push(json);
+  //         setTodoList(tempList);
+  //         // console.log("TODO LIST => ",todoList);
+  //         setTitleController("");
+  //         setTaskController("");
+  //       });
+  //       toast.success("Todo Added Successfully")
+
+  //   } catch (e) {
+  //     console.log("Error occured while adding TODO");
+  //     console.log(e.message);
+  //     toast.error("Todo failed to be added")
+  //   }
+  //   setLoading(false);
+  // }
+
+
 
   return (
-    <div className="App flex flex-col">
-      {/* Navbar */}
-      <Navbar />
-      {/* Search Bar & Adding Post options */}
-      <div className='flex flex-col mx-10 my-10 gap-5'>
-        <SearchBar text={"Search by title"} textController={title} setTextController={setTitle} />
+      <div className='flex flex-col'>
+        <Navbar/>
+        <Routes>
+          <Route path='/'  element={<HomePage/>}/>
+          {/* <Route path='/search' /> */}
 
-        <TodoForm
-          titleController={titleController}
-          setTitleController={setTitleController}
-          bodyController={taskController}
-          setBodyController={setTaskController}
-        />
-
-        <div className='flex group flex-col relative cursor-pointer' >
-          <button className='bg-purple-600 px-4 py-2 rounded-xl text-white '>
-            Add Todo
-          </button>
-          <div className='absolute bg-white duration-200 opacity-30 w-full  bottom-0 left-0 right-0 h-0 group-hover:h-full rounded-xl'></div>
-        </div>
+        </Routes>
       </div>
-
-
-    </div>
-  );
+   );
 }
 
 export default App;
