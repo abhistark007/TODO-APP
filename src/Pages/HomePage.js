@@ -81,11 +81,11 @@ function HomePage({todoList,setTodoList}) {
         {/* Filter BUtton */}
         <div className='flex gap-10 justify-center'>
             <button onClick={()=>setFilterStatus(true)}
-            className={`bg-purple-600 px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"bg-pink-600":""}`}>
+            className={` px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"bg-pink-600 font-bold":"bg-purple-600"}`}>
                 Filter ON
             </button>
             <button onClick={()=>setFilterStatus(false)}
-            className={`bg-purple-600 px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"":"bg-pink-600"}`}>
+            className={`px-4 py-2 text-white rounded-xl duration-200 ${filterStatus?"bg-purple-600":"bg-pink-600 font-bold"}`}>
                 Filter OFF
             </button>
         </div>
