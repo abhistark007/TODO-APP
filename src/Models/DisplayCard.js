@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 
 function DisplayCard({title,body,index,todoList,setTodoList}) {
@@ -7,13 +7,17 @@ function DisplayCard({title,body,index,todoList,setTodoList}) {
         tempList.splice(index,1);
         setTodoList(tempList);
     }
+    const [completed,setCompleted]=useState(false);
   return (
     <div className='flex flex-col gap-3 w-96 p-3 rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'>
-        <p className='font-bold font'>{title}</p>
-        <p>{body}</p>
+        <p className={`font-bold ${completed?"line-through":""}`}>{title}</p>
+        <p className={` ${completed?"line-through":""}`}>{body}</p>
         <div className='flex justify-between items-center'>
             <label className='flex gap-2'>
-                <input type='checkbox'/>
+                <input type='checkbox' onClick={(e)=>{
+                    setCompleted(!completed);
+                    // console.log(completed);
+                }} value={completed}/>
                 Completed?
             </label>
 
