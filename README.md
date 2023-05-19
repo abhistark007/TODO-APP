@@ -1,4 +1,4 @@
-# GTODO APP V1
+# TODO APP V1
 
 website link=> https://todo-app-v1-ee40f.web.app/
 
